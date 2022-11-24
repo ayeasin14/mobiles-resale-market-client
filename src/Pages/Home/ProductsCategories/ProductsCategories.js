@@ -1,10 +1,10 @@
 import React from 'react';
-import ProductsCard from '../Shared/ProductsCard/ProductsCard';
+import ProductsCard from '../../Shared/ProductsCard/ProductsCard';
 
-const Categories = () => {
+const ProductsCategories = () => {
     return (
         <div className='my-10'>
-            <h1 className='text-center my-5 text-2xl font-semibold'>this is Category page</h1>
+            <h1 className='text-center my-5 text-2xl font-semibold'>this is Products Category page</h1>
             <div className='grid grid-cols-3 gap-4'>
                 <ProductsCard></ProductsCard>
                 <ProductsCard></ProductsCard>
@@ -14,4 +14,4 @@ const Categories = () => {
     );
 };
 
-export default Categories; <h1>this is category page</h1>
+export default ProductsCategories;
