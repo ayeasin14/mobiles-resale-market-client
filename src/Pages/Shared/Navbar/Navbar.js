@@ -2,16 +2,33 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { FaMobileAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(err => console.error(err))
+    }
+
 
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/category'>Category</Link></li>
         <li><Link to='/blogs'>Blogs</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {/* <li><Link to='/login'>Login</Link></li> */}
+        {
+            user?.uid ?
+                <>
+                    <li><Link to='/dashboard'>Dashboard</Link></li>
+                    <li><button onClick={handleLogOut}>Sign Out</button></li>
+                </>
+                :
+                <li><Link to='/login'>Login</Link></li>
+        }
     </>
 
     return (
@@ -31,11 +48,30 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal p-0">
                     {menuItems}
                 </ul>
+
             </div>
-            <div className="navbar-end">
-                <Link to='/' className="btn">Get started</Link>
+            <div>
+                {
+                    user?.uid &&
+                    <div className="navbar-end ">
+                        <div className='mr-3'>
+                            {
+                                user?.uid ? <p>Hi <span className="text-xl font-bold">{user.displayName}</span></p> : 'Welcome'
+                            }
+
+                        </div>
+                        <div className=''>
+                            {
+                                user?.uid ? <img className="w-9 rounded-full" src={user.photoURL} alt="" /> : <FaUserCircle className='w-12' />
+                            }
+                            <button className='btn btn-warning btn-sm ml-3' onClick={handleLogOut}>Sign Out</button>
+                        </div>
+
+                    </div>
+                }
             </div>
-        </div>
+
+        </div >
     );
 };
 

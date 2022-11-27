@@ -1,14 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import PrimaryButton from '../../../Components/Button/PrimaryButton';
 
-const ProductsCard = () => {
+const ProductsCard = ({ product }) => {
+    // console.log(product);
+    const { productName, image, details, price, seller, yearOfUse } = product;
+
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
+        <div className="card card-compact bg-base-100 shadow-xl">
+            <figure><img src={image} alt="Shoes" /></figure>
             <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <h2 className="card-title">{productName}</h2>
+                <p>{details}</p>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <Link to='/'>
+                        <PrimaryButton classes='px-8 py-3 font-semibold rounded'>
+                            Booking now
+                        </PrimaryButton>
+                    </Link>
                 </div>
             </div>
         </div>
