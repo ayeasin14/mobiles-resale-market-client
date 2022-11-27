@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaMobileAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUserCircle } from "react-icons/fa";
+import PrimaryButton from '../../../Components/Button/PrimaryButton';
 
 const Navbar = () => {
 
@@ -24,7 +25,6 @@ const Navbar = () => {
             user?.uid ?
                 <>
                     <li><Link to='/dashboard'>Dashboard</Link></li>
-                    <li><button onClick={handleLogOut}>Sign Out</button></li>
                 </>
                 :
                 <li><Link to='/login'>Login</Link></li>
@@ -50,25 +50,28 @@ const Navbar = () => {
                 </ul>
 
             </div>
-            <div>
-                {
-                    user?.uid &&
-                    <div className="navbar-end ">
-                        <div className='mr-3'>
-                            {
-                                user?.uid ? <p>Hi <span className="text-xl font-bold">{user.displayName}</span></p> : 'Welcome'
-                            }
+            <div className='navbar-end'>
+                <div className=''>
+                    {
+                        user?.uid &&
+                        <div className="flex justify-between">
+                            <div className='mr-3'>
+                                {
+                                    user?.uid ? <p>Hi <span className="text-xl font-bold">{user.displayName}</span></p> : 'Welcome'
+                                }
+
+                            </div>
+                            <div>
+                                {
+                                    user?.photoURL ? <img className="w-9 rounded-full" src={user.photoURL} alt="" /> : <FaUserCircle className='text-3xl' />
+                                }
+                            </div>
+                            <button className='btn btn-warning btn-sm ml-3 text-white hover:text-gray-100 bg-gradient-to-r from-yellow-500 to-red-500 ' onClick={handleLogOut}>Sign Out</button>
+
 
                         </div>
-                        <div className=''>
-                            {
-                                user?.uid ? <img className="w-9 rounded-full" src={user.photoURL} alt="" /> : <FaUserCircle className='w-12' />
-                            }
-                            <button className='btn btn-warning btn-sm ml-3' onClick={handleLogOut}>Sign Out</button>
-                        </div>
-
-                    </div>
-                }
+                    }
+                </div>
             </div>
 
         </div >

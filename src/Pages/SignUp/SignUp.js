@@ -2,9 +2,9 @@ import toast from 'react-hot-toast';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-// import useToken from '../../hooks/useToken';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import useToken from '../../hooks/useToken';
 
 
 const SignUp = () => {
@@ -13,13 +13,13 @@ const SignUp = () => {
     const { createUser, updateUser, providerLogin } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedEmail] = useState('');
-    // const [token] = useToken(createdUserEmail);
+    const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
     const provider = new GoogleAuthProvider();
 
-    // if (token) {
-    //     navigate('/');
-    // }
+    if (token) {
+        navigate('/');
+    }
 
 
     const handleSignUp = (data) => {
