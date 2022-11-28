@@ -39,7 +39,7 @@ const SignUp = () => {
 
                     })
                     .catch(err => console.log(err))
-
+                // navigate('/')
             })
             .catch(error => {
                 console.error(error)
@@ -52,6 +52,7 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                // navigate('/');
             })
             .catch(error => {
                 console.log(error);
@@ -73,6 +74,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 setCreatedEmail(email);
             })
     };

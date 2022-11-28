@@ -33,7 +33,7 @@ const Login = () => {
                 console.log(user);
                 toast.success('Login succesfully');
                 setLoginUserEmail(data.email);
-                navigate('/')
+                // navigate('/')
 
             })
             .catch(error => {
@@ -48,7 +48,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 toast.success('Google Login succesfully');
-                navigate('/');
+                // navigate('/');
             })
             .catch(error => {
                 console.log(error);

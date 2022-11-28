@@ -66,8 +66,6 @@ const Navbar = () => {
                                 }
                             </div>
                             <button className='btn btn-warning btn-sm ml-3 text-white hover:text-gray-100 bg-gradient-to-r from-yellow-500 to-red-500 ' onClick={handleLogOut}>Sign Out</button>
-
-
                         </div>
                     }
                 </div>
