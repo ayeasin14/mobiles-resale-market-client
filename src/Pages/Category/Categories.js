@@ -1,16 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import ProductsCard from '../Shared/ProductsCard/ProductsCard';
 
 const Categories = () => {
 
     const [products, setProducts] = useState([]);
+    const { loading } = useContext(AuthContext);
 
 
     useEffect(() => {
         fetch("http://localhost:5000/products")
             .then(res => res.json())
-            .then(data => setProducts(data))
-    }, [])
+            .then(data => {
+
+                if (loading) {
+                    return <div className='text-center my-60'>
+                        <p className='text-2xl text-primary'>Loading...</p>
+                        <progress className="progress w-56"></progress>
+                    </div>
+                }
+
+                setProducts(data);
+            })
+    }, [loading])
+
+
+
+
 
     return (
         <div className='my-10 mx-auto'>

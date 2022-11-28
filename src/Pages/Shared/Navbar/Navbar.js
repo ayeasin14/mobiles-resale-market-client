@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { FaMobileAlt } from 'react-icons/fa';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { FaUserCircle } from "react-icons/fa";
-import PrimaryButton from '../../../Components/Button/PrimaryButton';
 
 const Navbar = () => {
 
@@ -55,9 +54,9 @@ const Navbar = () => {
                     {
                         user?.uid &&
                         <div className="flex justify-between">
-                            <div className='mr-3'>
+                            <div className='mr-3 hidden md:flex'>
                                 {
-                                    user?.uid ? <p>Hi <span className="text-xl font-bold">{user.displayName}</span></p> : 'Welcome'
+                                    user?.uid ? <p>Hi <span className="text-lg font-bold">{user.displayName}</span></p> : 'Welcome'
                                 }
 
                             </div>
