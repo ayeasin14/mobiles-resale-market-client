@@ -30,6 +30,7 @@ const AddProduct = () => {
                         category: data.category,
                         image: imgData.data.url,
                         seller: user.displayName,
+                        email: user.email,
                         price: data.price,
                         location: data.location,
                         mobileNumber: data.mobileNumber,
@@ -40,7 +41,7 @@ const AddProduct = () => {
 
                     // save information for products in database.
 
-                    fetch('http://localhost:5000/products', {
+                    fetch('https://mobiles-resale-market-server.vercel.app/products', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

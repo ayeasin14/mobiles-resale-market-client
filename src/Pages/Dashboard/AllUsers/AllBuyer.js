@@ -6,7 +6,7 @@ const AllBuyer = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyers'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/buyers')
+            const res = await fetch('https://mobiles-resale-market-server.vercel.app/buyers')
             const data = await res.json();
             console.log(data);
             return data
