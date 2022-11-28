@@ -4,8 +4,10 @@ import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Categories from "../../Pages/Category/Categories";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
+import AllBuyer from "../../Pages/Dashboard/AllUsers/AllBuyer";
+import AllSeller from "../../Pages/Dashboard/AllUsers/AllSeller";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
-import ManageProduct from "../../Pages/Dashboard/ManageProducts/ManageProducts";
+import MyOrder from "../../Pages/Dashboard/MyOrder/MyOrder";
 import MyProduct from "../../Pages/Dashboard/MyProduct/MyProduct";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Home from "../../Pages/Home/Home/Home";
@@ -59,13 +61,22 @@ const router = createBrowserRouter([
                 element: <AllUsers></AllUsers>
             },
             {
+                path: '/dashboard/allseller',
+                element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/allbuyer',
+                element: <AllBuyer></AllBuyer>
+            },
+            {
                 path: '/dashboard/addproduct',
                 element: <AddProduct></AddProduct>
             },
             {
-                path: '/dashboard/manageproducts',
-                element: <ManageProduct></ManageProduct>
-            }
+                path: '/dashboard/myorder',
+                element: <MyOrder></MyOrder>
+            },
+
         ]
     }
 ]);

@@ -28,18 +28,18 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast('User created succesfully');
+                toast.success('User created succesfully');
 
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email);
+                        saveUser(data.name, data.email, data.role);
 
                     })
                     .catch(err => console.log(err))
-                // navigate('/')
+
             })
             .catch(error => {
                 console.error(error)
@@ -52,7 +52,8 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                // navigate('/');
+                saveUser(user.displayName, user.email, { role: 'buyer' });
+
             })
             .catch(error => {
                 console.log(error);
@@ -63,8 +64,10 @@ const SignUp = () => {
     }
 
 
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
+        console.log(user);
+
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -118,6 +121,18 @@ const SignUp = () => {
 
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label"><span className="label-text">Account Type</span></label>
+                        <select
+                            {...register('role')}
+                            className="select select-bordered w-full max-w-xs">
+                            <option value='buyer'>Buyer</option>
+                            <option value='seller'>Seller</option>
+
+                        </select>
+                    </div>
+
                     <div>
                         {signUpError && <p className='text-red-600 my-3'>{signUpError}</p>}
                     </div>
